@@ -1,3 +1,6 @@
+
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,26 +11,37 @@
  *
  * @author enriquejosegaleanotalavera
  */
-public class Lugar {
+public class Lugar extends Thread{
 
 	private String lugar;
 	private String clima;
 	private int extensionTerritorial;
 	private int cantidadHabitantes;
 	private String tipo;
-	private String anoFundacion;
-
+	private String anoFundacion; 
+	private JFrame frame;
 	public Lugar() {
 	}
 
-	public Lugar(String lugar, String clima, int extensionTerritorial, int cantidadHabitantes, String tipo, String anoFundacion) {
+	public Lugar(String lugar, String clima, int extensionTerritorial, int cantidadHabitantes, String tipo, String anoFundacion, JFrame frame) {
 		this.lugar = lugar;
 		this.clima = clima;
 		this.extensionTerritorial = extensionTerritorial;
 		this.cantidadHabitantes = cantidadHabitantes;
 		this.tipo = tipo;
 		this.anoFundacion = anoFundacion;
+		this.frame = frame;
 	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	
 
 	public String getLugar() {
 		return lugar;
@@ -76,5 +90,15 @@ public class Lugar {
 	public void setAnoFundacion(String anoFundacion) {
 		this.anoFundacion = anoFundacion;
 	}
-
+	@Override
+	public void run(){
+		Lista JFrameLista = new Lista();
+		JFrameLista.setVisible(true);
+		JFrameLista.pack();
+		JFrameLista.setLocationRelativeTo(JFrameLista);
+		while (true) {	
+			JFrameLista.jt_nombreLugar.setText(lugar);
+			
+		}
+	}
 }
