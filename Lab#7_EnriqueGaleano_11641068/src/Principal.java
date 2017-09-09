@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author enriquejosegaleanotalavera
@@ -283,7 +282,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		Persona.setModal(true);
 		Persona.pack();
 		Persona.setVisible(true);
@@ -291,7 +290,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		String nombre;
 		int id;
 		String lugar;
@@ -301,47 +300,55 @@ public class Principal extends javax.swing.JFrame {
 		nombre = nombreCompleto.getText();
 		id = Integer.parseInt(numeroDeIdentitad.getText());
 		lugar = Lugarjt.getText();
-		edad1 = (Integer)(edad.getValue());
+		edad1 = (Integer) (edad.getValue());
 		estatura1 = Integer.parseInt(estatura.getText());
-		profesion1  = profesion.getText();
+		profesion1 = profesion.getText();
 		JOptionPane.showMessageDialog(this, "Se guardo con exito");
 		per.add(new Personas(nombre, id, lugar, edad1, estatura1, profesion1));
-		
+		try {
+			AdministrarPersona pr = new AdministrarPersona("./Usuarios.cbm");
+			pr.cargarArchivo();
+			pr.escribirArchivo();
+			
+		} catch (Exception e) {
+		}
+
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		String lugar1;
 		String clima1;
 		int extension1;
 		int habitantes1;
 		String tipo1;
 		String fundacion1;
-		
+
 		lugar1 = nombreDeLugar.getText();
-		System.out.println("Labl: " +this.Lugarjt.getText());
+		System.out.println("Labl: " + this.Lugarjt.getText());
 		clima1 = climajt.getText();
 		extension1 = Integer.parseInt(extension.getText());
 		habitantes1 = Integer.parseInt(habitantes.getText());
 		if (rural.isSelected()) {
 			tipo1 = "rural";
-		}else{
+		} else {
 			tipo1 = "urbano";
 		}
 		fundacion1 = Fundacion.getText();
-		
+
 		Lista jf = new Lista();
 		Lugar ld = new Lugar(lugar1, clima1, extension1, habitantes1, tipo1, fundacion1, jf, per);
 		ld.start();
-		
+
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_jButton4MouseEntered
 
     private void climajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_climajtActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_climajtActionPerformed
 
 	/**
@@ -349,7 +356,7 @@ public class Principal extends javax.swing.JFrame {
 	 */
 	public static void main(String args[]) {
 		/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
 		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 		 */
@@ -369,7 +376,7 @@ public class Principal extends javax.swing.JFrame {
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-        //</editor-fold>
+		//</editor-fold>
 
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {

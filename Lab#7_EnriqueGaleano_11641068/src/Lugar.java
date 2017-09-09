@@ -104,10 +104,10 @@ public class Lugar extends Thread {
 		JFrameLista.setLocationRelativeTo(JFrameLista);
 		System.out.println("LUGAR: " + lugar);
 		JFrameLista.jLabel2.setText(lugar);
-
+		//Aqui se agrega a la lista
 		while (true) {
 			DefaultTableModel modelo = (DefaultTableModel) JFrameLista.tablaLugares.getModel();
-			for (int i = 0; i < person.size(); i++) {
+			for (int i = 0; i < person.size()-1; i++) {
 				if (JFrameLista.jLabel2.getText().equals(person.get(i).getLugar())) {
 					Personas p = person.get(i);
 					Object[] rows = {p.getNombre(), p.getId(), p.getLugar(), p.getEdad(), p.getEstatura(), p.getProfesion()};
