@@ -17,9 +17,10 @@ import java.util.ArrayList;
  *
  * @author enriquejosegaleanotalavera
  */
+//Clase para poder administrar la persona y poder agregar al archivo de texto
 public class AdministrarPersona implements Serializable {
 
-	private ArrayList<Personas> p = new ArrayList();
+	private ArrayList<Personas> persona = new ArrayList();
 	private File pathLocation = null;
 
 	public AdministrarPersona(String path) {
@@ -27,11 +28,11 @@ public class AdministrarPersona implements Serializable {
 	}
 
 	public ArrayList<Personas> getP() {
-		return p;
+		return persona;
 	}
 
 	public void setP(ArrayList<Personas> p) {
-		this.p = p;
+		this.persona = persona;
 	}
 
 	public File getPathLocation() {
@@ -44,14 +45,14 @@ public class AdministrarPersona implements Serializable {
 
 	public void cargarArchivo() {
 		try {
-			p = new ArrayList();
+			persona = new ArrayList();
 			Personas temp;
 			if (pathLocation.exists()) {
 				FileInputStream entrada = new FileInputStream(pathLocation);
 				ObjectInputStream objeto = new ObjectInputStream(entrada);
 				try {
 					while ((temp = (Personas) objeto.readObject()) != null) {
-						p.add(temp);
+						persona.add(temp);
 					}
 				} catch (EOFException e) {
 				}
@@ -68,7 +69,7 @@ public class AdministrarPersona implements Serializable {
 		try {
 			fw = new FileOutputStream(pathLocation);
 			bw = new ObjectOutputStream(fw);
-			for (Personas t : p) {
+			for (Personas t : persona) {
 				bw.writeObject(t);
 			}
 			bw.flush();

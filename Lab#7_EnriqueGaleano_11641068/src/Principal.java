@@ -308,8 +308,10 @@ public class Principal extends javax.swing.JFrame {
 		try {
 			AdministrarPersona pr = new AdministrarPersona("./Usuarios.cbm");
 			pr.cargarArchivo();
+			pr.setP(per);
 			pr.escribirArchivo();
 		} catch (Exception e) {
+			
 		}
 
 

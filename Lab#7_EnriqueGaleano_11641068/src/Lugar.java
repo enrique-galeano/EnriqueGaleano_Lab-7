@@ -22,6 +22,7 @@ public class Lugar extends Thread {
 	private String anoFundacion;
 	private JFrame frame;
 	private ArrayList<Personas> person = new ArrayList();
+	//Intancia del JFrame del La lista
 	Lista JFrameLista = new Lista();
 
 	public Lugar() {
@@ -95,19 +96,21 @@ public class Lugar extends Thread {
 	public void setAnoFundacion(String anoFundacion) {
 		this.anoFundacion = anoFundacion;
 	}
-
+//metodo para poder correr el hilo
 	@Override
 	public void run() {
-
+		
 		JFrameLista.setVisible(true);
 		JFrameLista.pack();
 		JFrameLista.setLocationRelativeTo(JFrameLista);
-		System.out.println("LUGAR: " + lugar);
+		//System.out.println("LUGAR: " + lugar);
 		JFrameLista.jLabel2.setText(lugar);
-		//Aqui se agrega a la lista
+		//codigo del ingeniero de la clase Progra2.Clase15
 		while (true) {
 			DefaultTableModel modelo = (DefaultTableModel) JFrameLista.tablaLugares.getModel();
+			//for para recorrer el ArrayList de Personas 
 			for (int i = 0; i < person.size()-1; i++) {
+				//Verifica si el label tiene le mismo nombre del que tiene el JTextfield de las personas
 				if (JFrameLista.jLabel2.getText().equals(person.get(i).getLugar())) {
 					Personas p = person.get(i);
 					Object[] rows = {p.getNombre(), p.getId(), p.getLugar(), p.getEdad(), p.getEstatura(), p.getProfesion()};
